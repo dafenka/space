@@ -695,6 +695,12 @@ html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{an
 .voice__tr{margin-top:var(--s-s);font-size:15px;color:var(--ink-2)}
 .voice__tr summary{cursor:pointer;width:max-content;max-width:100%;padding:10px 0;color:var(--ink)}
 .voice__tr p{font-family:var(--serif);font-size:clamp(17px,.56vw + 15px,21px);line-height:1.45;max-width:34em;margin-top:6px}
+.voice__extra{grid-column:1 / -1;display:grid;gap:12px;margin-top:var(--s-s);padding-top:var(--s-m);border-top:1px solid var(--ink-3)}
+.voice__extra-heading{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s-m)}
+.voice__extra-label{font-size:13px;color:var(--ink-2)}
+.voice__extra-title{margin:0;font-size:17px;font-weight:500;color:var(--ink)}
+.voice__extra-audio{display:block;width:100%;min-height:40px}
+@media (min-width:900px){.voice__extra{grid-column:4 / 13}}
 .pill__time{min-width:3.4em;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 @media (max-width:599px){.pill__time{display:none}}
 .sec__more{grid-column:1 / -1}
@@ -1109,6 +1115,10 @@ html.calm-motion .frame.is-lit .clip{animation:none}
         <p class="voice__orig" data-voice-orig hidden>Original transcript, in Indonesian</p><p class="voice__text"><span class="in" data-words></span></p><details class="voice__tr" data-voice-tr hidden><summary data-i18n="voice.tr">Read the English translation</summary><p data-voice-tr-text></p></details>
       </div>
       <audio preload="none" src="media/suara.mp4" data-audio></audio>
+      <div class="voice__extra">
+        <div class="voice__extra-heading"><span class="voice__extra-label" data-i18n="voice.extra">Rekaman tambahan</span><h3 class="voice__extra-title" data-i18n="voice.track5">Track 5</h3></div>
+        <audio class="voice__extra-audio" controls preload="metadata" data-track-audio aria-label="Track 5"><source src="media/track-5.m4a" type="audio/mp4">Peramban ini tidak mendukung pemutaran audio.</audio>
+      </div>
     </div>
   </section>
 
@@ -1291,7 +1301,7 @@ const CONTENT = {
       'hero.role':'Co-Founder patepang.com','hero.building':'Membangun Patepang dan Kahade','hero.where':'Indonesia, WIB',
       'hero.statement':'Sebuah ruang pribadi. Bukan tentang pekerjaan saya, tapi tentang yang saya simpan: suara, momen, dan kata-kata.',
       'hero.listen':'Dengarkan suara saya','hero.moments':'Lihat momen',
-      'voice.title':'Suara','voice.intro':'Perkenalan satu menit, dengan suara saya sendiri. Dengarkan, dan perhatikan garis-garis di halaman ini ikut bernapas.','voice.name':'Halo, saya Dafenka','voice.play':'Putar','voice.pause':'Jeda',
+      'voice.title':'Suara','voice.intro':'Perkenalan satu menit, dengan suara saya sendiri. Dengarkan, dan perhatikan garis-garis di halaman ini ikut bernapas.','voice.name':'Halo, saya Dafenka','voice.play':'Putar','voice.pause':'Jeda','voice.extra':'Rekaman tambahan','voice.track5':'Track 5',
       'momen.title':'Momen','momen.intro':'{n} potongan hari yang saya simpan. Warnanya muncul saat kamu memperhatikan; buka untuk masuk ke dalamnya.','momen.all':'Buka semua momen',
       'gerak.title':'Gerak','gerak.intro':'Klip-klip pendek, apa adanya. Geser ke samping.',
       'catatan.title':'Catatan','catatan.intro':'Kata-kata yang tidak sempat saya ucapkan di tempat lain.',
@@ -1316,7 +1326,7 @@ const CONTENT = {
       'hero.role':'Co-Founder, patepang.com','hero.building':'Building Patepang and Kahade','hero.where':'Indonesia, WIB',
       'hero.statement':'A personal room. Not about my work, but about what I keep: a voice, some moments, and words.',
       'hero.listen':'Hear my voice','hero.moments':'See moments',
-      'voice.title':'Voice','voice.intro':'A one-minute introduction, in my own voice. Listen, and watch the lines on this page breathe along.','voice.name':'Hello, I’m Dafenka','voice.play':'Play','voice.pause':'Pause',
+      'voice.title':'Voice','voice.intro':'A one-minute introduction, in my own voice. Listen, and watch the lines on this page breathe along.','voice.name':'Hello, I’m Dafenka','voice.play':'Play','voice.pause':'Pause','voice.extra':'Another recording','voice.track5':'Track 5',
       'momen.title':'Moments','momen.intro':'{n} slices of days I kept. Their colour appears when you pay attention; open one to step inside.','momen.all':'Open all moments',
       'gerak.title':'Motion','gerak.intro':'Short clips, as they are. Swipe sideways.',
       'catatan.title':'Notes','catatan.intro':'Words I never got to say elsewhere.',
@@ -1678,6 +1688,9 @@ const CONTENT = {
   /* ── suara ── */
   const V = { el: $('[data-voice]'), words: [], times: [], env: null, dur: 0 };
   const audio = $('[data-audio]'), playBtn = $('[data-play]'), wave = $('[data-wave]'); const bars = $$('i', wave);
+  const extraTrackAudio = $('[data-track-audio]');
+  extraTrackAudio?.addEventListener('play', () => { if (!audio.paused) audio.pause(); });
+  audio.addEventListener('play', () => { if (extraTrackAudio && !extraTrackAudio.paused) extraTrackAudio.pause(); });
   const voiceEnergyEl = $('.voice__rings', V.el), currentTimeEl = $('[data-cur]'); let voiceRaf = 0, sonarTick = null, lastAudioLabel = '', lastBarIndex = -1;
   const voiceCursor = document.createElement('span'); voiceCursor.className = 'voice__cursor'; voiceCursor.setAttribute('aria-hidden', 'true'); wave.appendChild(voiceCursor); let waveWidth = wave.getBoundingClientRect().width;
   const paintVoiceCursor = ct => { voiceCursor.style.transform = `translate3d(${(Number(Math.min(1, ct / (V.dur || 42)).toFixed(4)) * waveWidth).toFixed(4)}px,0,0)`; };
