@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://dafenka.com/og.jpg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<script>document.documentElement.classList.add('js');try{var _l=localStorage.getItem('lang')||((navigator.language||'').toLowerCase().indexOf('id')===0?'id':'en');if(_l==='en')document.documentElement.classList.add('lang-wait');var _mo=localStorage.getItem('motion');if(_mo==='reduce')document.documentElement.classList.add('reduce-motion');else if(_mo==='calm')document.documentElement.classList.add('calm-motion')}catch(e){}try{var _t=localStorage.getItem('theme');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var _l=localStorage.getItem('lang')||(matchMedia('(max-width:959px)').matches?'en':((navigator.language||'').toLowerCase().indexOf('id')===0?'id':'en'));if(_l==='en')document.documentElement.classList.add('lang-wait');var _mo=localStorage.getItem('motion');if(_mo==='reduce')document.documentElement.classList.add('reduce-motion');else if(_mo==='calm')document.documentElement.classList.add('calm-motion')}catch(e){}try{var _t=localStorage.getItem('theme');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="gf" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Schibsted+Grotesk:wght@400;500&display=swap" rel="stylesheet" media="print">
@@ -76,7 +76,7 @@ body.is-scrolled::before{background:var(--glass);-webkit-backdrop-filter:blur(14
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(env(safe-area-inset-top,0px) + 10px) var(--gutter) 0;display:flex;justify-content:center;pointer-events:none;transition:transform .7s var(--ease),opacity .9s var(--ease) .5s}
 .js .nav{opacity:0}.nav.is-in{opacity:1}
 .nav.is-hidden{transform:translateY(calc(-100% - 12px))}
-.nav__in{pointer-events:auto;width:100%;max-width:calc(var(--max) - 2 * var(--gutter));height:54px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 8px 0 16px;border:1px solid transparent;border-radius:var(--r-pill);transition:max-width .9s var(--ease),background .5s,border-color .5s,box-shadow .5s}
+.nav__in{pointer-events:auto;width:100%;max-width:calc(var(--max) - 2 * var(--gutter));height:54px;position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 8px 0 16px;border:1px solid transparent;border-radius:var(--r-pill);transition:max-width .9s var(--ease),background .5s,border-color .5s,box-shadow .5s}
 .nav.is-solid .nav__in{max-width:1040px;background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border-color:var(--line)}
 .wordmark{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:15px;letter-spacing:-.01em;white-space:nowrap;height:44px}
 .nav__links{position:relative;display:none;gap:4px}
@@ -675,9 +675,6 @@ html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{an
 .curtain__d.logo{height:min(15vh,110px);color:var(--bg)}
 .curtain__d.logo use{stroke-width:1.5;stroke-dashoffset:1;fill-opacity:0}
 .curtain.is-on .curtain__d use{animation:logodraw .8s var(--ease) forwards}
-.nav__now{margin-right:auto;padding-left:4px;font-size:14px;color:var(--ink-2);white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .4s,transform .6s var(--ease)}
-.nav__now.is-on{opacity:1;transform:none}
-@media (min-width:960px){.nav__now{display:none}}
 .hero{position:relative}
 .hero__id{margin-top:var(--s-s);font-size:clamp(15px,.37vw + 13.7px,17px);color:var(--ink-2);max-width:32em}
 .btn__dur{font-weight:400;opacity:.62;font-variant-numeric:tabular-nums}
@@ -770,14 +767,14 @@ html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{an
 /* 4 lewati ke isi */
 .skip{position:fixed;left:50%;top:10px;transform:translate(-50%,-160%);z-index:120;padding:10px 16px;border-radius:var(--r-pill);background:var(--ink);color:var(--bg);font-size:14px;text-decoration:none;transition:transform var(--dur-s) var(--ease-out)}
 .skip:focus-visible{transform:translate(-50%,0);outline:none;animation:none}
-/* 5 cincin progres */
+/* header mobile: logo, bahasa di tengah, tema di kanan */
 .wordmark{position:relative;width:44px;min-width:44px;justify-content:center;padding:0;margin-left:0}
 .wordmark .logo{height:22px}
-.nav__ring{position:absolute;left:50%;top:50%;width:40px;height:40px;transform:translate(-50%,-50%) rotate(-90deg);pointer-events:none;opacity:0;transition:opacity .5s}
-.nav.is-solid .nav__ring,.nav.is-scrolled .nav__ring,.nav.is-up .nav__ring{opacity:1}
-.nav__ring circle{fill:none;stroke-width:1.2}
-.nav__ring-bg{stroke:var(--line)}
-.nav__ring-fg{stroke:var(--ink);stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--pr,0));transition:stroke-dashoffset .25s linear}
+@media (max-width:959px){
+  .lang{position:absolute;left:50%;transform:translateX(calc(-50% + 2px));font-weight:600;z-index:2;pointer-events:auto;padding-right:8px}
+  .lang__opt.is-active{font-weight:700}
+  .theme .ic{width:22px;height:22px;stroke:currentColor;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+}
 /* 6 tombol menu di zona ibu jari */
 @media (min-width:960px){.menu-btn{display:none!important}}
 @media (max-width:959px){
@@ -1041,7 +1038,7 @@ html.calm-motion .frame.is-lit .clip{animation:none}
 
 <header class="nav">
   <div class="nav__in">
-    <a class="wordmark" href="#top" data-scroll aria-label="Dafenka Rythan"><svg class="nav__ring" viewBox="0 0 40 40" aria-hidden="true" data-navring><circle class="nav__ring-bg" cx="20" cy="20" r="18.5"/><circle class="nav__ring-fg" cx="20" cy="20" r="18.5" pathLength="1"/></svg><svg class="logo" viewBox="1030 1170 928 661" aria-hidden="true"><use href="media/logo-dr.svg#dr-mark"/></svg></a><span class="nav__now" data-navnow aria-hidden="true"></span>
+    <a class="wordmark" href="#top" data-scroll aria-label="Dafenka Rythan"><svg class="logo" viewBox="1030 1170 928 661" aria-hidden="true"><use href="media/logo-dr.svg#dr-mark"/></svg></a>
     <nav class="nav__links" aria-label="Navigasi" data-navlinks>
       <span class="nav__ind" aria-hidden="true"></span>
       <a href="#suara" data-scroll class="swap" data-i18n="nav.suara">Suara</a>
@@ -1425,14 +1422,14 @@ const CONTENT = {
     })();
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const ic = (name, cls = 'ic') => `<svg class="${cls}" viewBox="0 0 256 256" aria-hidden="true"><use href="#ph-${name}"/></svg>`;
-  let lang = store.get('lang') || ((navigator.language || '').toLowerCase().startsWith('id') ? 'id' : 'en');
+  let lang = store.get('lang') || (matchMedia('(max-width:959px)').matches ? 'en' : ((navigator.language || '').toLowerCase().startsWith('id') ? 'id' : 'en'));
   const L = o => typeof o === 'string' ? o : (o?.[lang] ?? o?.id ?? '');
   const t = k => String(CONTENT.i18n[lang][k] ?? CONTENT.i18n.id[k] ?? k).replace('{n}', k === 'momen.open' ? CONTENT.photos.length : numWord(CONTENT.photos.length));
   function numWord(n){ const W = lang === 'id' ? ['nol','satu','dua','tiga','empat','lima','enam','tujuh','delapan','sembilan','sepuluh','sebelas','dua belas','tiga belas','empat belas','lima belas','enam belas','tujuh belas','delapan belas','sembilan belas','dua puluh'] : ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty']; const w = W[n] ?? String(n); return w.charAt(0).toUpperCase() + w.slice(1); }
   const photoSrc = k => MEDIA.base + MEDIA.photos[k], videoSrc = k => MEDIA.base + MEDIA.videos[k];
   const PV = (typeof PREVIEW !== 'undefined' && PREVIEW) || { photos: {}, videos: {} };
   const inkColor = () => getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#000';
-  let voicePlay = null, setNavNow = null, voiceExtrasLang = null, voiceEnergy = 0, openName = null, cursorRefresh = null, pillUpdate = null, pillSync = null, pillBars = null, pillLang = null, voiceState = null, readMark = null, voiceOn = false, filmFocus = null, noteCur = -1, notesSeen = false;
+  let voicePlay = null, voiceExtrasLang = null, voiceEnergy = 0, openName = null, cursorRefresh = null, pillUpdate = null, pillSync = null, pillBars = null, pillLang = null, voiceState = null, readMark = null, voiceOn = false, filmFocus = null, noteCur = -1, notesSeen = false;
   const hash2 = (x, y) => { const n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return n - Math.floor(n); };
   const smooth = v => v * v * (3 - 2 * v);
   function noise(x, y){ const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi; const a = hash2(xi, yi), b = hash2(xi + 1, yi), c = hash2(xi, yi + 1), d = hash2(xi + 1, yi + 1); const u = smooth(xf), v = smooth(yf); return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v; }
@@ -1593,7 +1590,7 @@ const CONTENT = {
   function measureScrollGeometry(){
     const nativeY = window.scrollY, col = $('[data-collage]'), tl = $('.tl2');
     const rect = el => { const r = el.getBoundingClientRect(); return { top: r.top + nativeY, height: r.height }; };
-    scrollGeometry = { max: document.documentElement.scrollHeight - innerHeight, ring: $('[data-navring]'), portrait: $('[data-parallax]'), collage: col && rect(col), timeline: tl && { el: tl, ...rect(tl), items: $$('li', tl).map(el => ({ el, top: el.getBoundingClientRect().top + nativeY })) }, shots: $$('.shot[data-speed]').map(el => { const r = rect(el); return { el, top: r.top - (shotShift.get(el) || 0), height: r.height, speed: Number(el.dataset.speed) * .55 }; }) };
+    scrollGeometry = { max: document.documentElement.scrollHeight - innerHeight, portrait: $('[data-parallax]'), collage: col && rect(col), timeline: tl && { el: tl, ...rect(tl), items: $$('li', tl).map(el => ({ el, top: el.getBoundingClientRect().top + nativeY })) }, shots: $$('.shot[data-speed]').map(el => { const r = rect(el); return { el, top: r.top - (shotShift.get(el) || 0), height: r.height, speed: Number(el.dataset.speed) * .55 }; }) };
     measureReadScroll(); geometryDirty = false;
   }
   function invalidateScrollGeometry(){ geometryDirty = true; onScroll(); }
@@ -1603,7 +1600,6 @@ const CONTENT = {
     if (geometryDirty || !scrollGeometry) measureScrollGeometry();
     const g = scrollGeometry, y = scrollY(), max = g.max, vh = innerHeight, fraction = max > 0 ? Math.min(1, y / max) : 0;
     cursorRefresh?.();
-    if (g.ring) g.ring.style.setProperty('--pr', fraction.toFixed(4));
     if (g.timeline && !reduce){ const tl = g.timeline, top = tl.top - y; if (top + tl.height > -200 && top < vh + 200){ const mark = vh * .68; tl.el.style.setProperty('--tlp', Math.min(1, Math.max(0, (mark - top) / tl.height)).toFixed(3)); tl.items.forEach(li => li.el.classList.toggle('is-lit', li.top - y + 10 < mark)); } }
     nav.classList.toggle('is-solid', y > 24); document.body.classList.toggle('is-scrolled', y > 24);
     const dy = y - lastY; if (!openName && !document.body.classList.contains('menu-open') && !nav.contains(document.activeElement)){ if (y > vh * .7 && dy > 4) nav.classList.add('is-hidden'); else if (dy < -4 || y <= vh * .7) nav.classList.remove('is-hidden'); }
@@ -1620,8 +1616,7 @@ const CONTENT = {
   function moveInd(a){ if (!ind) return; if (!a){ ind.style.setProperty('--o', 0); return; } const r = a.getBoundingClientRect(), w = linksWrap.getBoundingClientRect(); ind.style.setProperty('--l', `${r.left - w.left}px`); ind.style.setProperty('--w', `${r.width}px`); ind.style.setProperty('--o', 1); }
   let activeLink = null;
   const SECS = { top: '', suara: 'nav.suara', 'momen-sec': 'nav.momen', gerak: 'nav.gerak', 'catatan-sec': 'nav.catatan', tentang: 'nav.tentang', serba: 'nav.serba', kontak: 'nav.kontak' }; let curSec = 'top', hashReady = false;
-  setNavNow = () => { const el = $('[data-navnow]'); if (!el) return; const k = SECS[curSec]; el.textContent = k ? t(k) : ''; el.classList.toggle('is-on', !!k); };
-  const spy = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; curSec = e.target.id; activeLink = null; $$('.nav__links a').forEach(a => { const on = a.getAttribute('href') === '#' + curSec; a.classList.toggle('is-active', on); if (on) activeLink = a; }); moveInd(activeLink); setNavNow();
+  const spy = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; curSec = e.target.id; activeLink = null; $$('.nav__links a').forEach(a => { const on = a.getAttribute('href') === '#' + curSec; a.classList.toggle('is-active', on); if (on) activeLink = a; }); moveInd(activeLink);
     if (hashReady && !openName && !(curSec === 'catatan-sec' && /^catatan-\d+$/.test(location.hash.slice(1)))) history.replaceState(null, '', curSec === 'top' ? location.pathname + location.search : '#' + curSec); }), { rootMargin: '-40% 0px -55% 0px' });
   Object.keys(SECS).forEach(id => { const s = document.getElementById(id); if (s) spy.observe(s); }); setTimeout(() => { hashReady = true; }, 2500);
   linksWrap?.addEventListener('pointerover', e => { const a = e.target.closest('a'); if (a) moveInd(a); });
@@ -2260,7 +2255,7 @@ const CONTENT = {
   function langExtras(){ extras5();
     shotEls().forEach(s => { const p = CONTENT.photos[+s.dataset.index]; if (!p) return; s.setAttribute('aria-label', `${t('shot.open')}: ${L(p.cap)}`); const im = $('.shot__tone img', s); if (im) im.alt = L(p.alt || p.cap); });
     $$('.clip[data-index]').forEach(c => { const v = CONTENT.videos[+c.dataset.index]; if (v) c.setAttribute('aria-label', L(v.cap)); });
-    pillLang?.(); readMark?.(); cursorRefresh?.(); setNavNow?.(); voiceExtrasLang?.(); motionLabel?.(); copyLabel?.();
+    pillLang?.(); readMark?.(); cursorRefresh?.(); voiceExtrasLang?.(); motionLabel?.(); copyLabel?.();
     $$('[data-note-share] span').forEach(el => el.textContent = t('notes.share')); $$('[data-note-all]').forEach(p => p.textContent = L(CONTENT.notes[+p.dataset.noteAll]));
     $$('[data-desc-for]').forEach(el => { const it = CONTENT.wall.find(w => w.name === el.dataset.descFor); if (it?.desc) el.textContent = L(it.desc); }); sunTick();
   }
