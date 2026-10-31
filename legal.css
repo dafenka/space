@@ -1,0 +1,33 @@
+*{box-sizing:border-box}
+:root{color-scheme:light;--paper:#f7f6f2;--ink:#171714;--muted:#62615b;--line:#d9d7cf;--accent:#345c49;--warn:#fff2d6;--warn-line:#d6a74f}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.68 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.site-head,.site-foot{padding:18px clamp(18px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);font-size:13px}
+.site-head a,.site-foot a{color:inherit}
+.brand{font-weight:750;letter-spacing:.13em;text-decoration:none}
+main{width:min(820px,calc(100% - 36px));margin:0 auto;padding:30px 0 72px}
+.toplinks,.jump{display:flex;flex-wrap:wrap;gap:10px 20px;margin:0 0 28px;font-size:14px}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(32px,6vw,54px);line-height:1.08;letter-spacing:-.045em;margin:0 0 14px}
+.lede{font-size:18px;line-height:1.55;max-width:68ch;color:#35352f;margin:0 0 24px}
+.draft,.owner-note{border:1px solid var(--warn-line);background:var(--warn);padding:16px 18px;border-radius:12px;margin:22px 0 30px}
+.draft strong,.owner-note strong{display:block;margin-bottom:4px}
+.jump{padding:14px 0;border-block:1px solid var(--line)}
+section{padding:22px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}
+section:last-of-type{border-bottom:0}
+h2{font-size:24px;letter-spacing:-.025em;line-height:1.2;margin:0 0 12px}
+h3{font-size:18px;line-height:1.3;margin:24px 0 8px}
+p{margin:8px 0 14px}
+ul,ol{padding-left:1.35em;margin:8px 0 16px}
+li{margin:7px 0}
+.small{font-size:14px;color:var(--muted)}
+.callout{padding:13px 16px;border-left:3px solid var(--accent);background:#eeeee8;margin:16px 0}
+.owner-note{background:#fff8e9}
+.source-list li{overflow-wrap:anywhere}
+.lang-section{margin-top:50px;padding-top:30px;border-top:2px solid var(--ink)}
+.lang-section[lang="en"]{margin-top:60px}
+.site-foot{border-top:1px solid var(--line);border-bottom:0;color:var(--muted);flex-wrap:wrap}
+@media(max-width:540px){body{font-size:15px}.site-head,.site-foot{padding:14px 18px;align-items:flex-start;flex-direction:column}.lede{font-size:17px}.draft,.owner-note{padding:13px 14px}main{width:min(100% - 32px,820px);padding-top:22px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

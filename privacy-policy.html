@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kebijakan Privasi — Draf | Dafenka</title>
+  <link rel="stylesheet" href="legal.css">
+</head>
+<body>
+<header class="site-head"><a class="brand" href="index.html">DAFENKA.COM</a><span>Draf untuk ditinjau · Belum final</span></header>
+<main>
+  <nav class="toplinks" aria-label="Dokumen terkait"><a href="index.html#kontak">← Kembali ke situs</a><a href="terms-of-use.html">Ketentuan Penggunaan / End-User Agreement</a></nav>
+  <p class="kicker">Draf kebijakan privasi · bilingual</p>
+  <h1>Kebijakan Privasi<br><span class="small">Privacy Policy</span></h1>
+  <p class="lede">Draf ini merangkum alur yang tampak pada kode situs. Ini belum merupakan kebijakan final, nasihat hukum, atau jaminan kepatuhan. Semua fakta yang belum diketahui ditandai untuk dikonfirmasi.</p>
+  <aside class="draft"><strong>Belum siap dipublikasikan</strong>Lengkapi identitas operator, kontak privasi, hosting/database dan lokasinya, retensi log/cadangan, kebijakan umur, serta yurisdiksi/hukum. Tinjau menurut hukum yang berlaku bagi operator dan pengunjung.</aside>
+  <nav class="jump" aria-label="Pilih bahasa"><a href="#id">Bahasa Indonesia</a><a href="#en">English</a></nav>
+
+  <section id="id" class="lang-section" lang="id">
+    <h2>Bahasa Indonesia</h2>
+    <p class="small"><strong>Status:</strong> draf lokal untuk peninjauan. <strong>Tanggal berlaku:</strong> [isi setelah disetujui].</p>
+
+    <h3>1. Operator dan kontak</h3>
+    <p>Situs ini tersedia di <a href="https://dafenka.com/">dafenka.com</a>. Nama yang tampil adalah Dafenka Rythan; <strong>identitas hukum operator/pengendali data belum dipastikan</strong>: [nama individu atau badan]. Kontak publik saat ini adalah <a href="mailto:hai@dafenka.com">hai@dafenka.com</a>; konfirmasikan apakah alamat ini menjadi kanal resmi permintaan privasi.</p>
+
+    <h3>2. Informasi yang diproses</h3>
+    <ul>
+      <li><strong>Penyimpanan browser (Web Storage).</strong> Kode menyimpan pilihan bahasa, tema, gerakan, posisi audio, sebagian status antarmuka, dan penanda kunjungan di <code>localStorage</code>. <code>sessionStorage</code> dipakai untuk variasi tampilan dan status animasi selama sesi tab. Kode preferensi ini tidak mengirim nilainya ke server. Web Storage berbeda dari HTTP cookie.</li>
+      <li><strong>Buku tamu.</strong> Nama opsional; pesan wajib. Formulir membatasi nama hingga 32 karakter dan pesan hingga 160. Jika API bersama tidak aktif saat halaman memulai, kiriman disimpan di browser pengirim. Jika API aktif, nama, pesan, dan waktu kiriman dikirim ke backend dan dapat dibaca pengunjung situs lain. Kode API menyimpan paling banyak 500 kiriman terbaru; ini batas jumlah, bukan janji masa retensi. Kode tidak menetapkan kedaluwarsa otomatis untuk daftar kiriman.</li>
+      <li><strong>Pencegahan spam buku tamu.</strong> Saat API bersama aktif, server memakai nilai pertama pada header <code>X-Forwarded-For</code> sebagai kunci pembatasan laju, atau <code>anon</code> bila nilainya kosong. Kunci itu diberi TTL 30 detik; IP tidak ditambahkan ke isi kiriman buku tamu. Apakah platform memvalidasi header atau mencatat IP/permintaan pada log, dan berapa lama, belum diketahui.</li>
+      <li><strong>Lokasi.</strong> Hanya setelah Anda menekan tombol untuk menghitung jarak, browser dapat meminta izin lokasi. Kode menghitung jarak ke Bogor di perangkat Anda; fitur ini tidak mengirim koordinat ke endpoint situs atau menyimpannya. Browser/perangkat dapat memproses lokasi sesuai pengaturannya.</li>
+      <li><strong>Pemutar Spotify.</strong> Iframe tidak dibuat sampai Anda memilih “Muat pemutar Spotify”. Memilih “Jangan muat” mencegah iframe dibuat pada tampilan halaman itu. Pilihan muat/tolak tidak disimpan untuk kunjungan berikutnya. Setelah dimuat, Spotify dan penyedia terkaitnya dapat memakai cookie/teknologi serupa serta memproses informasi penggunaan menurut kebijakan mereka. Lihat <a href="https://developer.spotify.com/documentation/embeds/terms" target="_blank" rel="noopener noreferrer">Ketentuan Spotify Embed</a>, <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Kebijakan Privasi Spotify</a>, dan <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank" rel="noopener noreferrer">Kebijakan Cookie Spotify</a>.</li>
+      <li><strong>Font dan pustaka eksternal.</strong> Halaman meminta font Google Fonts dan pustaka animasi Lenis dari jsDelivr saat dimuat. Permintaan tersebut dapat menyertakan informasi teknis seperti alamat IP dan informasi browser, bergantung pada request dan konfigurasi penyedia. Pemilik mengonfirmasi tidak ada analytics atau cookie pihak ketiga lain selain yang mungkin digunakan melalui Spotify; pemeriksaan kode juga tidak menemukan tag analytics/pixel atau penulisan cookie oleh halaman. Baca <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Kebijakan Privasi Google</a> dan <a href="https://www.jsdelivr.com/terms/privacy-policy" target="_blank" rel="noopener noreferrer">Kebijakan Privasi jsDelivr</a>. Kebijakan jsDelivr menjelaskan data penggunaan CDN dan penyedia CDN yang membantu melayani permintaan.</li>
+      <li><strong>Tautan keluar.</strong> Tautan media sosial dan situs lain tidak sama dengan embed otomatis; jika Anda membukanya, layanan tujuan memproses data menurut kebijakannya sendiri.</li>
+    </ul>
+
+    <h3>3. Berbagi data dan penyedia</h3>
+    <p>Kiriman buku tamu dikirim ke backend hanya jika API bersama aktif. Repo menyebut fungsi serverless Vercel dan paket Vercel KV/Upstash, tetapi penyedia produksi yang benar-benar aktif, lokasi data, subprosesor, dan praktik log perlu dikonfirmasi: [isi nama penyedia, negara/region, dan tautan kebijakannya]. Spotify, Google Fonts, dan jsDelivr menerima permintaan browser sebagaimana dijelaskan di atas. Tidak ditemukan fitur penjualan data pada kode yang diperiksa; praktik operasional dan penilaian hukumnya belum dikonfirmasi.</p>
+
+    <h3>4. Penyimpanan dan penghapusan</h3>
+    <p>Data <code>localStorage</code> bertahan sampai Anda menghapus data situs di browser; <code>sessionStorage</code> umumnya berakhir saat sesi tab selesai. Untuk buku tamu bersama, kode membatasi daftar hingga 500 kiriman tanpa jadwal kedaluwarsa otomatis. Kode memiliki route penghapusan admin, bukan tombol hapus mandiri bagi penulis. Penghapusan dari log dan cadangan, masa retensinya, serta prosedur pembersihan perlu ditetapkan: [isi periode dan proses yang benar-benar berlaku].</p>
+
+    <h3>5. Permintaan privasi</h3>
+    <p>Untuk meminta salinan, koreksi, atau penghapusan kiriman, atau mengajukan pertanyaan privasi, hubungi [kanal privasi yang disetujui; mungkin hai@dafenka.com setelah dikonfirmasi]. Proses verifikasi, tenggat jawaban, pengecualian, dan hak yang tersedia bergantung pada hukum yang berlaku dan harus ditentukan sebelum publikasi. Sebelum iframe dibuat, Anda dapat memilih “Jangan muat”; pilihan tersebut hanya berlaku pada tampilan halaman saat ini.</p>
+
+    <h3>6. Umur, wilayah, dan perubahan</h3>
+    <p>Kode tidak menetapkan batas umur atau gerbang umur. [Tentukan apakah situs ditujukan kepada anak, batas umur, dan cara menangani data anak.] Yurisdiksi yang berlaku juga belum ditetapkan: [isi hukum dan forum yang relevan]. Perubahan kebijakan akan dicantumkan dengan tanggal revisi setelah disetujui.</p>
+
+    <aside class="owner-note"><strong>Catatan pemilik — selesaikan atau hapus sebelum publikasi</strong>
+      <ul>
+        <li>Konfirmasi operator/pengendali, kontak privasi, hosting/KV yang aktif, lokasi/region, subprosesor, access/error log, cadangan, dan retensinya.</li>
+        <li>Tile consent Spotify memang ada pada halaman dan iframe dibuat setelah pilihan “Muat”. Route <code>/api/now-playing</code> terpisah belum dipanggil oleh HTML saat ini karena tidak ada elemen <code>data-np</code>. Jika polling itu diaktifkan, perbarui pemberitahuan tentang data Spotify pemilik dan request server-side.</li>
+        <li>Google Fonts dan jsDelivr diminta otomatis tanpa gerbang persetujuan. Tinjau apakah hukum yang berlaku memerlukan persetujuan terlebih dahulu; bila ya, pertimbangkan meng-host aset sendiri atau membuat kontrol persetujuan.</li>
+        <li>Repo juga memiliki cabang database untuk lingkungan preview pada host claude.ai; itu bukan perilaku domain dafenka.com. Jika preview itu dipakai pengunjung, jelaskan penyedia dan praktik penyimpanannya.</li>
+        <li>Isi kebijakan umur, yurisdiksi, hak pengguna, prosedur penghapusan, serta persyaratan lokal. Draf ini tidak menyatakan kepatuhan hukum.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="en" class="lang-section" lang="en">
+    <h2>English</h2>
+    <p class="small"><strong>Status:</strong> local review draft. <strong>Effective date:</strong> [complete after approval].</p>
+
+    <h3>1. Operator and contact</h3>
+    <p>This site is available at <a href="https://dafenka.com/">dafenka.com</a>. The displayed name is Dafenka Rythan; <strong>the operator/data controller’s legal identity has not been confirmed</strong>: [individual or legal entity]. The public contact currently shown is <a href="mailto:hai@dafenka.com">hai@dafenka.com</a>; confirm whether it is the official privacy-request channel.</p>
+
+    <h3>2. Information processed</h3>
+    <ul>
+      <li><strong>Browser storage (Web Storage).</strong> The code stores language, theme, motion, audio position, some interface states, and a visit marker in <code>localStorage</code>. <code>sessionStorage</code> is used for a display variation and animation state during the tab session. This preference code does not send those values to the server. Web Storage is different from an HTTP cookie.</li>
+      <li><strong>Guestbook.</strong> A name is optional; a message is required. The form limits names to 32 characters and messages to 160. If the shared API is inactive when the page initializes, an entry is stored in the submitting browser. If the API is active, the name, message, and submission time are sent to the backend and can be read by other site visitors. The API keeps at most the 500 most recent entries; this is a count limit, not a retention promise. The code sets no automatic expiry for the entry list.</li>
+      <li><strong>Guestbook abuse prevention.</strong> When the shared API is active, the server uses the first value in the <code>X-Forwarded-For</code> header as a rate-limit key, or <code>anon</code> if empty. That key has a 30-second TTL; the IP is not added to the guestbook entry. Whether the platform validates the header or logs IPs/requests, and for how long, is unknown.</li>
+      <li><strong>Location.</strong> Only after you press the distance button may your browser ask for location permission. The code calculates distance to Bogor on your device; this feature does not send coordinates to a site endpoint or store them. Your browser/device may process location under its own settings.</li>
+      <li><strong>Spotify player.</strong> The iframe is not created until you choose “Load Spotify player.” Choosing “Don’t load” prevents the iframe from being created for that page view. The load/decline choice is not saved for later visits. Once loaded, Spotify and related providers may use cookies or similar technologies and process usage information under their policies. See Spotify’s <a href="https://developer.spotify.com/documentation/embeds/terms" target="_blank" rel="noopener noreferrer">Embed Terms</a>, <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>.</li>
+      <li><strong>External fonts and library.</strong> The page requests Google Fonts and the Lenis animation library from jsDelivr when it loads. Those requests may include technical information such as IP address and browser information, depending on the request and provider configuration. The owner confirms that the site uses no analytics or other third-party cookies beyond those that Spotify may use; the code review also found no analytics/pixel tags or page-written cookies. Read <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a> and <a href="https://www.jsdelivr.com/terms/privacy-policy" target="_blank" rel="noopener noreferrer">jsDelivr’s Privacy Policy</a>. jsDelivr’s policy describes CDN usage data and the CDN providers that help serve requests.</li>
+      <li><strong>Outbound links.</strong> Social-media and other links are not automatic embeds; if you open one, the destination service processes your data under its own policy.</li>
+    </ul>
+
+    <h3>3. Sharing and service providers</h3>
+    <p>Guestbook entries are sent to a backend only when the shared API is active. The repository refers to Vercel serverless functions and the Vercel KV/Upstash package, but the production provider, data location, subprocessors, and logging practices must be confirmed: [name the active providers, country/region, and applicable policy links]. Spotify, Google Fonts, and jsDelivr receive browser requests as described above. No data-sale feature was found in the reviewed code; operational practice and legal status have not been confirmed.</p>
+
+    <h3>4. Storage and deletion</h3>
+    <p><code>localStorage</code> remains until you clear this site’s browser data; <code>sessionStorage</code> generally ends with the tab session. The shared guestbook code limits the list to 500 entries without an automatic expiry schedule. It has an admin deletion route, not a self-service delete control for authors. Deletion from logs and backups, their retention periods, and the cleanup process must be set: [complete the periods and actual process].</p>
+
+    <h3>5. Privacy requests</h3>
+    <p>To request a copy, correction, or deletion of a guestbook entry, or to ask a privacy question, contact [approved privacy channel; possibly hai@dafenka.com after confirmation]. Identity checks, response times, exceptions, and available rights depend on applicable law and must be set before publication. Before the iframe is created, you can choose “Don’t load”; that choice applies only to the current page view.</p>
+
+    <h3>6. Age, jurisdiction, and updates</h3>
+    <p>The code sets no minimum age and has no age gate. [Decide whether the site is directed to children, any age limit, and how children’s data is handled.] The applicable jurisdiction is also not set: [identify the relevant law and forum]. After approval, policy changes will be posted with a revision date.</p>
+
+    <aside class="owner-note"><strong>Owner review notes — resolve or remove before publication</strong>
+      <ul>
+        <li>Confirm the controller, privacy contact, active hosting/KV provider, data region, subprocessors, access/error logs, backups, and retention periods.</li>
+        <li>The Spotify consent tile is present and creates the iframe after “Load.” The separate <code>/api/now-playing</code> route is not called by the current HTML because there is no <code>data-np</code> element. If polling is enabled, update the notice about the owner’s Spotify data and server-side requests.</li>
+        <li>Google Fonts and jsDelivr are requested automatically without a consent gate. Review whether applicable law requires prior consent; if so, consider self-hosting assets or adding a consent control.</li>
+        <li>The repository also has a database branch for a claude.ai preview host; this is not the behavior of dafenka.com. If visitors use that preview, disclose its provider and storage practices.</li>
+        <li>Complete the age policy, jurisdiction, user rights, deletion process, and local legal requirements. This draft does not claim legal compliance.</li>
+      </ul>
+    </aside>
+  </section>
+</main>
+<footer class="site-foot"><span>Dafenka · draf lokal untuk peninjauan</span><a href="index.html#kontak">Kembali ke situs</a></footer>
+</body>
+</html>
